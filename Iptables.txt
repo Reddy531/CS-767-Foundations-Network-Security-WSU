@@ -1,0 +1,14 @@
+Steps performed to upgrade iptables to nftables in Prod-joomla
+
+First, execute the following command "sudo apt-get update"
+Now, install iptables using the command " sudo apt-get install iptables"
+Display existing iptables using the command "sudo iptables -L"
+To save the existing rules to a file, run the command "iptables-save > rules.iptables"
+Now, copy the content using command "cat rules.iptables"
+We also install nftables, and the iptables-nftables-compat tool using commands "sudo apt install nftables" and "sudo apt install iptables-nftables-compat"
+Run the command to generate the nft rules file "iptables-restore-translate -f rules.iptables > rules.nft"
+Now, we enable the nftables service using the command "sudo systemctl enable nftables.service"
+Now, we pull in the previous ruleset from the rules.nft file using command "sudo nft -f rules.nft"
+Finally, to display rules we use the command "sudo nft list ruleset"
+Hence, iptables are upgraded to nftables
+Lastly, we need to uninstall the iptables using command "sudo apt-get remove --purge iptables"

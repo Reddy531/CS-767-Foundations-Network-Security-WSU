@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define LEN 32 
+
+void main()
+{
+
+        unsigned char *key =(unsigned char *) malloc(sizeof(unsigned char) * LEN);
+        FILE* random = fopen("/dev/urandom", "r");
+        fread(key, sizeof(unsigned char)*LEN,1,random);
+        fclose(random);
+        for(int p=0; p<LEN;p++)
+	{
+                printf("%02x", key[p]);
+	}
+	print("\n");
+}

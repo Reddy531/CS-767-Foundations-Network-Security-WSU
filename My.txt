@@ -1,0 +1,22 @@
+Steps followed in order to perform the tasks are:
+
+Installing fail2ban i.e. using command " sudo apt-get update" and later perform "sudo apt-get upgrade"
+Now, install fail2ban using command "sudo apt-get install -y fail2ban"
+Now, we need to enable and start fail2ban using commands "sudo systemctl enable fail2ban" and "sudo systemctl start fail2ban"
+Hence, we can see that fail2ban blocks the brute force traffic
+Steps Followed in order to Install Modsecurity and enable for apache2
+
+Perform "sudo apt update" and "sudo apt upgrade"
+Now, install ModSecurity on Apache using command "sudo apt install libapache2-mod-security2"
+Restart the apache server using the command " sudo systemctl restart apache2"
+Now, configure the ModSecurity using the command "sudo cp /etc/modsecurity/modsecurity.conf-recommended /etc/modsecurity/modsecurity.conf"
+Now, again restart the apache server using the command "sudo systemctl restart apache2"
+Steps Followed to make Modsecurity rules active
+
+We know that we have "owasp-modsecurity-crs-3.2-dev" folder
+open the folder using the command "cd owasp-modsecurity-crs-3.2-dev"
+Now, Move the crs-setup file using the command "sudo mv crs-setup.conf.example /etc/modsecurity/crs-setup.conf"
+Then move the rules/ directory using the command "sudo mv rules/ /etc/modsecurity"
+Next, check your security2.conf file to verify it’s set to load the ModSecurity rules using command "sudo nano /etc/apache2/mods-enabled/security2.conf"
+Now, Verify you have the following lines included and uncommented i.e. "IncludeOptional /etc/modsecurity/*.conf" and " Include /etc/modsecurity/rules/*.conf"
+Restart the Apache server using the command " sudo systemctl restart apache2"

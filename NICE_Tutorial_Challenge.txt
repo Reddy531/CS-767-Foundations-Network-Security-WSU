@@ -1,0 +1,20 @@
+Below are the sequence of steps which I followed to complete the challenge checks
+
+Steps which I followed to complete Check-1
+
+Open Prod-Web
+Logged in with my credentials i.e."playerone" and password like "password123"
+Added a new user Gary using the command "sudo adduser gthatcher" and password as "password123"
+Hence, check whether the user has been added or not using command "cat /etc/passwd"
+You can see our user has been listed at the bottom
+Steps which I followed to complete Check-2 
+
+use the command "sudo visudo"
+You'll be able to see the data in the file and find "## Allow people in the group to run all commands"
+Once you see this, Add our user with all privileges using the command "gthatcher ALL=(ALL) ALL"
+Hence, you have given all privileges to our user Gary
+
+Steps which I followed to complete Check-3
+In order to perform a system update, we need to run the command "sudo yum update"
+You'll be asked with a prompt asking your permission with yes/no, then type "y" and hit enter
+You can see all the packages will be installed
